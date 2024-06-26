@@ -15,11 +15,8 @@ function DetailsPage() {
         if (!authenticationToken) {
 			navigate('/app/login');
         }
-
-        // get the gift to be rendered on the details page
         const fetchGift = async () => {
             try {
-				// Task 2: Fetch gift details
                 const url = `${urlConfig.backendUrl}/api/gifts/${productId}`;
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -35,17 +32,13 @@ function DetailsPage() {
         };
 
         fetchGift();
-
-		window.scrollTo(0,0);
+	window.scrollTo(0,0);
     }, [productId, navigate]);
 
 
     const handleBackClick = () => {
-		// Task 4: Handle back click
-		navigate(-1);
-	};
-
-	//The comments have been hardcoded for this project.
+	navigate(-1);
+    };
     const comments = [
         {
             author: "John Doe",
@@ -107,8 +100,7 @@ function DetailsPage() {
             </div>
             <div className="comments-section mt-4">
                 <h3 className="mb-3">Comments</h3>
-				// Task 7: Render comments section by using the map function to go through all the comments
-				{comments.map((comment, index) => (
+		{comments.map((comment, index) => (
                     <div key={index} className="card mb-3">
                         <div className="card-body">
                             <p className="comment-author"><strong>{comment.author}:</strong></p>
